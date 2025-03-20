@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: transparent !important;
+  font-family: 'Overpass', sans-serif;
+  font-size: {font_size};
+  color: {text_color};
+}
+
+/* Chat container */
+#log {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  gap: 12px;
+}
+
+/* Glassy chat bubbles */
+#log > div {
+  border-radius: 18px;
+  padding: 10px 14px;
+  max-width: 90%;
+  align-self: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: hsla(calc(var(--user-color) * 360), 70%, 85%, 0.5);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15), inset 0 0 2px rgba(255,255,255,0.1);
+  animation: fadeInRight .3s ease forwards, fadeOut 0.5s ease {message_hide_delay} forwards;
+}
+
+/* Hide moderator badges / crowns */
+.badge {
+  display: none !important;
+}
+
+/* Username styling (bubble color base) */
+.name {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  color: hsl(calc(var(--user-color) * 360), 80%, 70%);
+  text-align: center;
+}
+
+/* Message text */
+.message {
+  font-weight: 400;
+  color: hsl(calc(var(--user-color) * 360), 30%, 92%);
+  word-break: break-word;
+   text-shadow: 0 10px 20px rgba(0,0,0,0.25);
+  text-align: center;
+
+
+}
+
+/* Individual color variations for users */
+#log > div:nth-child(6n+1) { --user-color: 0.05; }
+#log > div:nth-child(6n+2) { --user-color: 0.12; }
+#log > div:nth-child(6n+3) { --user-color: 0.23; }
+#log > div:nth-child(6n+4) { --user-color: 0.31; }
+#log > div:nth-child(6n+5) { --user-color: 0.42; }
+#log > div:nth-child(6n+6) { --user-color: 0.58; }
+
+/* Optional: Hide colon */
+.colon {
+  display: none;
+}
